@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Simple Webpage</title>
+</head>
+<body>
+    <video width="1280" height="720" controls autoplay>
+        <source src="1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <h1>Welcome!Test web Made By Joy</h1>
+    <p>This is a simple webpage that contains an image and some text.</p>
+    
+    <img src="1.jpeg" alt="Sample Image" width="300" height="200">
+    <img src="1.jpg" alt="Sample Image" width="600" height="600">
+
+    <audio autoplay>
+        <source src="1.wav" type="audio/wav">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <p>Hi and welcome</p>
+    
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget semper eros. Integer et ex in eros consequat hendrerit. Nullam sit amet velit nec ligula tristique ultrices. Sed fermentum hendrerit quam, ut tempor dolor scelerisque ut.</p>
+    
+    <p>Donec nec lectus eu dui mattis tristique. Nullam mattis facilisis ex, at scelerisque purus faucibus a. Pellentesque tincidunt tellus ac velit imperdiet, ac hendrerit est imperdiet. Duis auctor justo at erat eleifend gravida.</p>
+    
+    <form id="message-form">
+        <textarea id="message-input" rows="4" cols="50" placeholder="输入留言内容..."></textarea>
+        <button type="button" id="publish-button">发布留言</button>
+    </form>
+    
+    <div id="message-container">
+        <!-- 这里将显示用户发布的留言 -->
+    </div>
+    
+    <script>
+        // 获取留言输入框和发布按钮元素
+        const messageInput = document.getElementById("message-input");
+        const publishButton = document.getElementById("publish-button");
+        const messageContainer = document.getElementById("message-container");
+        
+        // 从localStorage中获取保存的留言内容
+        const savedMessages = localStorage.getItem("savedMessages");
+        if (savedMessages) {
+            messageContainer.innerHTML = savedMessages;
+        }
+      
+        // 监听发布按钮的点击事件
+        publishButton.addEventListener("click", function() {
+            // 获取用户输入的留言内容
+            const message = messageInput.value;
+            
+            // 创建一个新的留言元素
+            const messageElement = document.createElement("p");
+            messageElement.textContent = message;
+            
+            // 将留言元素添加到留言容器中
+            messageContainer.appendChild(messageElement);
+            
+            // 保存留言内容到localStorage
+            localStorage.setItem("savedMessages", messageContainer.innerHTML);
+            
+            // 清空留言输入框
+            messageInput.value = "";
+        });
+    </script>
+</body>
+</html>
